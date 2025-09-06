@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b2to23cgtapas"]
+
+[node name="AttributionsLicense" type="Label"]
+custom_minimum_size = Vector2(480, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_right = 240.0
+offset_bottom = 73.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+text = "Role1fjkdf;flkjdslfkmvsdlfkvmds;kflmvs;dflkvnldskfjnvldskjfnvlsdjfnvldkjfnv"
+horizontal_alignment = 1
+autowrap_mode = 3

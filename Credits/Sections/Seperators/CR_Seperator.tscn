@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://dph5bqdmodcms"]
+
+[ext_resource type="Theme" uid="uid://bnjlbw5twyf6f" path="res://Credits/Sections/Seperators/CR_Seperator.tres" id="1_gce6i"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="SectionSeperator" type="HSeparator" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 216.0
+offset_right = -216.0
+offset_bottom = 4.0
+grow_horizontal = 2
+size_flags_horizontal = 6
+size_flags_stretch_ratio = 0.5
+theme = ExtResource("1_gce6i")

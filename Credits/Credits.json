@@ -1,0 +1,43 @@
+{
+	"Developers": [
+		{
+			"Name": "Zimraan",
+			"Jobs": [
+				"Scripting",
+				"Credits"
+			]
+		},
+		{
+			"Name": "Jack",
+			"Jobs": [
+				"Scripting",
+				"animation",
+				"Splash screen"
+			]
+		},
+		{
+			"Name": "Theo",
+			"Jobs": [
+				"Audio"
+			]
+		},
+		{
+			"Name": "Finn",
+			"Jobs": [
+				"Art",
+				"Animation"
+			]
+		}
+	],
+	"Attributions": [
+		{
+			"name": "Godot",
+			"parts": [
+				{
+					"copyright": [],
+					"license": "This game uses Godot Engine, available under the following license:"
+				}
+			]
+		}
+	]
+}

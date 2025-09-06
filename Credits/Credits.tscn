@@ -21,7 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0.227331, 0.227331, 1)
 
-[node name="CreditsBox" type="ScrollContainer" parent="."]
+[node name="CreditsBox" type="Control" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -31,5 +31,16 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CreditsBox"]
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -320.0
+offset_top = 393.0
+offset_right = 320.0
+offset_bottom = 393.0
+grow_horizontal = 2
 size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="CreditsBox/VBoxContainer"]
+layout_mode = 2
