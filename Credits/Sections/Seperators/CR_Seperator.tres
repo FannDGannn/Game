@@ -2,6 +2,7 @@
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_8x468"]
 color = Color(0.637489, 0.270035, 0.310645, 1)
+thickness = 4
 
 [resource]
 HSeparator/constants/separation = 4

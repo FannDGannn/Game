@@ -12,12 +12,12 @@ size_flags_vertical = 4
 
 [node name="SectionSeperator" type="HSeparator" parent="."]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 216.0
-offset_right = -216.0
+anchors_preset = -1
+anchor_left = 0.35625
+anchor_right = 0.64375
 offset_bottom = 4.0
 grow_horizontal = 2
 size_flags_horizontal = 6
 size_flags_stretch_ratio = 0.5
 theme = ExtResource("1_gce6i")
+metadata/_edit_use_anchors_ = true

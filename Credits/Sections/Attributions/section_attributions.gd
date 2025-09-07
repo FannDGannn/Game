@@ -6,21 +6,23 @@ var data = []
 var attributionsNode := preload("res://Credits/Sections/Attributions/attributions_credit.tscn")
 var CRSep := preload("res://Credits/Sections/Seperators/CR_Seperator.tscn")
 
+var containerQueue :=[]
+
 func _ready() -> void:
 	#print(data)
 	#print(Engine.get_author_info())
 	var cpriteInfo=Engine.get_copyright_info()
-	for a in cpriteInfo:
-		print(a)
+	#for a in cpriteInfo:
+		#print(a)
 	data+=cpriteInfo
 		
 	$Tile.text = "Attributions"
-	var colms = $ColumnCredits
+	var colms = %ColumnCredits
+	var colms2 = %ColumnCredits2
 	var Number = data.size()-1
 	var count = 0;
 	for author in data:
 		var authorCredit = attributionsNode.instantiate()
-		
 		authorCredit.attribName=author["name"]
 		authorCredit.copyright = ""
 		authorCredit.license = ""
@@ -29,9 +31,32 @@ func _ready() -> void:
 					authorCredit.copyright+=part["copyright"][i]
 					authorCredit.copyright+="\n"
 				authorCredit.license=part["license"]
-		colms.add_child(authorCredit)
-		if(count<Number):
-			colms.add_child(CRSep.instantiate())
-		count+=1
-		
-	#pass
+		print(colms.size," ", colms2.size)
+		containerQueue.push_back(authorCredit)
+		#if(colms.size.y>colms2.size.y):
+			#colms.add_child(authorCredit)
+		#else:
+			#colms2.add_child(authorCredit)
+		#if(count<Number):
+			#authorCredit.add_child(CRSep.instantiate())
+		#count+=1
+
+func _process(delta: float) -> void:
+		print(%ColumnCredits.size," ", %ColumnCredits2.size)
+		var authorCredit = containerQueue.pop_front()
+		if(authorCredit):
+			if(%ColumnCredits.size.y<%ColumnCredits2.size.y):
+				%ColumnCredits.add_child(authorCredit)
+			else:
+				%ColumnCredits2.add_child(authorCredit)
+			#if(containerQueue.size()>0):
+			authorCredit.add_child(CRSep.instantiate())
+		if(!authorCredit):
+			var botLeft=%ColumnCredits.get_child(%ColumnCredits.get_child_count()-1)
+			var botRight=%ColumnCredits2.get_child(%ColumnCredits2.get_child_count()-1)
+			var sepRight = botLeft.get_child(botLeft.get_child_count()-1) 
+			var sepLeft = botRight.get_child(botRight.get_child_count()-1)
+			if(sepLeft.get_child(0) is HSeparator and sepRight.get_child(0) is HSeparator):
+				sepLeft.queue_free()
+				sepRight.queue_free()
+	

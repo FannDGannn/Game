@@ -6,7 +6,7 @@ extends VBoxContainer
 @export var license:String= "BLANK"
 var RoleNode = preload("res://Credits/Sections/Attributions/attributions_license.tscn")
 func	 _ready() -> void:
-	%Name.text=attribName +':'
+	%Name.text=attribName
 	var role = RoleNode.instantiate()
 	%Roles.add_child(setCRInfo(role,copyright,license))
 		

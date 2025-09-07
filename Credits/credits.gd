@@ -22,9 +22,12 @@ func _ready():
 	else:
 		data = credits.data
 # TODO: make Title UI lable to instantiate
+	var count = 0
 	for Section in data:
 		%CreditsBox/VBoxContainer.add_child(createCreditsSection(data[Section],Sections.get(Section)))
-		%CreditsBox/VBoxContainer.add_child(sectionSeperator.instantiate())
+		count+=1
+		if(count<data.size()):
+			%CreditsBox/VBoxContainer.add_child(sectionSeperator.instantiate())
 
 func _process(delta: float) -> void:
 	if(!Engine.is_editor_hint()):
