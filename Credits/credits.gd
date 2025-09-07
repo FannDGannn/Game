@@ -39,8 +39,10 @@ func _process(delta: float) -> void:
 	if(!Engine.is_editor_hint()):
 		if(Input.is_action_pressed("ui_accept")):
 			%CreditsBox.position.y -=50*10*delta
+			$AudioStreamPlayer.pitch_scale = 10;
 		else:
 			%CreditsBox.position.y -=50*delta
+			$AudioStreamPlayer.pitch_scale = 1
 		if((Input.is_action_just_pressed("ui_cancel")|| (-%VBoxContainer.global_position.y)>%VBoxContainer.size.y)and hasNotLeftYet):
 			ExitCreditsScene.emit()
 		pass
@@ -63,6 +65,6 @@ func onExitCreditScene():
 	$AnimationPlayer.play("fade out")
 	$AnimationPlayer.animation_finished.connect(leaveCreditScene)
 	
-func leaveCreditScene(what):
+func leaveCreditScene(_what):
 	print("Exiting Credit Scene")
 	pass

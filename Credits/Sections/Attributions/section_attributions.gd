@@ -17,10 +17,6 @@ func _ready() -> void:
 	data+=cpriteInfo
 		
 	$Tile.text = "Attributions"
-	var colms = %ColumnCredits
-	var colms2 = %ColumnCredits2
-	var Number = data.size()-1
-	var count = 0;
 	for author in data:
 		var authorCredit = attributionsNode.instantiate()
 		authorCredit.attribName=author["name"]
@@ -33,7 +29,7 @@ func _ready() -> void:
 				authorCredit.license=part["license"]
 		containerQueue.push_back(authorCredit)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var colms = %ColumnCredits
 	var colms2 = %ColumnCredits2
 	var authorCredit = containerQueue.pop_front()

@@ -140,3 +140,6 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_4rjik")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+autoplay = true
