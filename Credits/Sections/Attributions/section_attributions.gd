@@ -31,32 +31,24 @@ func _ready() -> void:
 					authorCredit.copyright+=part["copyright"][i]
 					authorCredit.copyright+="\n"
 				authorCredit.license=part["license"]
-		print(colms.size," ", colms2.size)
 		containerQueue.push_back(authorCredit)
-		#if(colms.size.y>colms2.size.y):
-			#colms.add_child(authorCredit)
-		#else:
-			#colms2.add_child(authorCredit)
-		#if(count<Number):
-			#authorCredit.add_child(CRSep.instantiate())
-		#count+=1
 
 func _process(delta: float) -> void:
-		print(%ColumnCredits.size," ", %ColumnCredits2.size)
-		var authorCredit = containerQueue.pop_front()
-		if(authorCredit):
-			if(%ColumnCredits.size.y<%ColumnCredits2.size.y):
-				%ColumnCredits.add_child(authorCredit)
-			else:
-				%ColumnCredits2.add_child(authorCredit)
-			#if(containerQueue.size()>0):
-			authorCredit.add_child(CRSep.instantiate())
-		if(!authorCredit):
-			var botLeft=%ColumnCredits.get_child(%ColumnCredits.get_child_count()-1)
-			var botRight=%ColumnCredits2.get_child(%ColumnCredits2.get_child_count()-1)
-			var sepRight = botLeft.get_child(botLeft.get_child_count()-1) 
-			var sepLeft = botRight.get_child(botRight.get_child_count()-1)
-			if(sepLeft.get_child(0) is HSeparator and sepRight.get_child(0) is HSeparator):
-				sepLeft.queue_free()
-				sepRight.queue_free()
+	var colms = %ColumnCredits
+	var colms2 = %ColumnCredits2
+	var authorCredit = containerQueue.pop_front()
+	if(authorCredit):
+		if(colms.size.y<colms2.size.y):
+			colms.add_child(authorCredit)
+		else:
+			colms2.add_child(authorCredit)
+		authorCredit.add_child(CRSep.instantiate())
+	if(!authorCredit):
+		var botLeft=colms.get_child(colms2.get_child_count()-1)
+		var botRight=colms2.get_child(colms2.get_child_count()-1)
+		var sepRight = botLeft.get_child(botLeft.get_child_count()-1) 
+		var sepLeft = botRight.get_child(botRight.get_child_count()-1)
+		if(sepLeft.get_child(0) is HSeparator and sepRight.get_child(0) is HSeparator):
+			sepLeft.queue_free()
+			sepRight.queue_free()
 	

@@ -1,6 +1,8 @@
 @tool
 extends Control
 
+signal ExitCreditsScene
+
 enum Sections {
 	Developers,
 	Attributions,
@@ -9,8 +11,10 @@ var developersSection = preload("res://Credits/Sections/Developers/section_credi
 var attributionsSection = preload("res://Credits/Sections/Attributions/section_attributions.tscn")
 
 var sectionSeperator = preload("res://Credits/Sections/Seperators/Section_Seperator.tscn")
-
+var hasNotLeftYet = true
 func _ready():
+	hasNotLeftYet=true
+	ExitCreditsScene.connect(onExitCreditScene)
 	# read in credits file
 	var creditsFile := FileAccess.open("res://Credits/Credits.json",FileAccess.READ).get_as_text()
 	var credits:=JSON.new()
@@ -28,12 +32,19 @@ func _ready():
 		count+=1
 		if(count<data.size()):
 			%CreditsBox/VBoxContainer.add_child(sectionSeperator.instantiate())
+			
+	%AnimationPlayer.play("fade in")
 
 func _process(delta: float) -> void:
 	if(!Engine.is_editor_hint()):
-		%CreditsBox.position.y -=50*delta
+		if(Input.is_action_pressed("ui_accept")):
+			%CreditsBox.position.y -=50*10*delta
+		else:
+			%CreditsBox.position.y -=50*delta
+		if((Input.is_action_just_pressed("ui_cancel")|| (-%VBoxContainer.global_position.y)>%VBoxContainer.size.y)and hasNotLeftYet):
+			ExitCreditsScene.emit()
 		pass
-
+	#print( (-%CreditsBox.position.y)>%VBoxContainer.size.y)
 
 func createCreditsSection(rolesinfo,sectionType:Sections):
 	var sec
@@ -46,3 +57,12 @@ func createCreditsSection(rolesinfo,sectionType:Sections):
 	sec.data = rolesinfo
 	return sec
 	
+func onExitCreditScene():
+	hasNotLeftYet=false
+	print("About to Leave Credit Scene")
+	$AnimationPlayer.play("fade out")
+	$AnimationPlayer.animation_finished.connect(leaveCreditScene)
+	
+func leaveCreditScene(what):
+	print("Exiting Credit Scene")
+	pass
