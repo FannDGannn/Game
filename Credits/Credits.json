@@ -31,11 +31,11 @@
 	],
 	"Attributions": [
 		{
-			"name": "Godot",
+			"name": "godot-git-plugin",
 			"parts": [
 				{
-					"copyright": [],
-					"license": "This game uses Godot Engine, available under the following license:"
+					"copyright": ["2016-2023, The Godot Engine community"],
+					"license": "MIT"
 				}
 			]
 		}
